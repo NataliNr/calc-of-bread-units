@@ -5,8 +5,19 @@
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="home">Home</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="register">Register</string>
+    <string name="recipes">Recipes</string>
+    <string name="products">Products</string>
+
+
+    <string name="hello_register_fragment">Hello register fragment</string>
+    <string name="hello_home_fragment">Hello home fragment</string>
+    <string name="navigation_drawer_open">Navigation drawer open</string>
+    <string name="navigation_drawer_close">Navigation drawer close</string>
+
+    <string name="menu_register">Register</string>
+    <string name="menu_products">Products</string>
+    <string name="menu_recipes">Recipes</string>
 </resources>
