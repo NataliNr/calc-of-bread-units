@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.calccarbohydrates.ui.register.RegisterFragment"
+        android:name="com.example.calccarbohydrates.ui.journal.JournalFragment"
         android:label="@string/menu_register"
         tools:layout="@layout/fragment_register" />
 

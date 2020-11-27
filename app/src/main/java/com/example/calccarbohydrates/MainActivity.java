@@ -1,11 +1,14 @@
 package com.example.calccarbohydrates;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.calccarbohydrates.ui.products.CreateProducts;
 import com.example.calccarbohydrates.ui.products.ProductsFragment;
 import com.example.calccarbohydrates.ui.recipes.RecipesFragment;
-import com.example.calccarbohydrates.ui.register.RegisterFragment;
+import com.example.calccarbohydrates.ui.journal.JournalFragment;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +20,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.MenuItem;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawer;
     Toolbar toolbar;
     FragmentTransaction fragmentTransaction;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, CreateProducts.class));
+            }
+        });
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -67,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.register:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, RegisterFragment.newInstance(), RegisterFragment.class.getSimpleName());
+                fragmentTransaction.replace(R.id.fragment_container, JournalFragment.newInstance(), JournalFragment.class.getSimpleName());
                 fragmentTransaction.commit();
                 break;
             case R.id.recipes:

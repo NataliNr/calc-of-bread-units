@@ -1,4 +1,4 @@
-package com.example.calccarbohydrates.ui.register;
+package com.example.calccarbohydrates.ui.journal;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,18 +14,18 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.calccarbohydrates.R;
 
-public class RegisterFragment extends Fragment {
+public class JournalFragment extends Fragment {
 
-    private RegisterViewModel registerViewModel;
+    private JournalViewModel registerViewModel;
 
     public static Fragment newInstance() {
-        return new RegisterFragment();
+        return new JournalFragment();
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         registerViewModel =
-                new ViewModelProvider(this).get(RegisterViewModel.class);
+                new ViewModelProvider(this).get(JournalViewModel.class);
         View root = inflater.inflate(R.layout.fragment_register, container, false);
         final TextView textView = root.findViewById(R.id.textview_first);
         registerViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {

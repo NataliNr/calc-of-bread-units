@@ -1,14 +1,14 @@
-package com.example.calccarbohydrates.ui.register;
+package com.example.calccarbohydrates.ui.journal;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class RegisterViewModel extends ViewModel {
+public class JournalViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public RegisterViewModel() {
+    public JournalViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is home fragment");
     }

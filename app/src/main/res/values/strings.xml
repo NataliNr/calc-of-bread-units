@@ -10,6 +10,8 @@
     <string name="register">Register</string>
     <string name="recipes">Recipes</string>
     <string name="products">Products</string>
+    <string name="carbohydrates">Carbohydrates</string>
+    <string name="add_product">Add Product</string>
 
 
     <string name="hello_register_fragment">Hello register fragment</string>

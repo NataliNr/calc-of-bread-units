@@ -1,26 +1,27 @@
 package com.example.calccarbohydrates.model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-import java.util.ArrayList;
 
-
+@Entity
 public class Products {
 
-    @SerializedName("id")
-    @Expose
-    private Integer id;
-    @SerializedName("name")
-    @Expose
+    public Products(String name, String carbohydrates) {
+        this.name = name;
+        this.carbohydrates = carbohydrates;
+    }
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+    @ColumnInfo(name = "name")
     private String name;
 
-    public Products(String name) {
+    @ColumnInfo(name = "carbohydrates")
+    private String carbohydrates;
 
-        this.name = name;
-    }
-
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
@@ -34,6 +35,14 @@ public class Products {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCarbohydrates() {
+        return carbohydrates;
+    }
+
+    public void setCarbohydrates(String carbohydrates) {
+        this.carbohydrates = carbohydrates;
     }
 
 }

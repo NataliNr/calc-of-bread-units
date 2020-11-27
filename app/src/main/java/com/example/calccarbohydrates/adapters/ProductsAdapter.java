@@ -36,6 +36,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
        holder.name.setText(products.get(position).getName());
+       holder.carbohydrates.setText(products.get(position).getCarbohydrates());
     }
 
     @Override
@@ -47,10 +48,12 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView name;
+        TextView carbohydrates;
 
         private   ViewHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.name_product);
+            carbohydrates = (TextView) itemView.findViewById(R.id.name_carbohydrates);
             itemView.setOnClickListener(this);
         }
 
