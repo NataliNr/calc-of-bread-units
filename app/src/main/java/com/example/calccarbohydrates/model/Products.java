@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 
-@Entity
+@Entity(tableName = "products")
 public class Products {
 
     public Products(String name, String carbohydrates) {

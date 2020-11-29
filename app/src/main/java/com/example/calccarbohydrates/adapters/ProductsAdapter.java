@@ -1,6 +1,7 @@
 package com.example.calccarbohydrates.adapters;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +20,14 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
-    public ProductsAdapter(Context context, List<Products> products) {
-        this.mInflater = LayoutInflater.from(context);
-        mContext = context;
+    public ProductsAdapter(List<Products> products, Context context) {
         this.products = products;
+        this.mContext = context;
+    }
+
+    public void setProducts(List<Products> products) {
+        this.products = products;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -35,17 +40,19 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-       holder.name.setText(products.get(position).getName());
-       holder.carbohydrates.setText(products.get(position).getCarbohydrates());
+       holder.name.setText(String.format(mContext.getString(R.string.product) + " " + products.get(position).getName() + " " + mContext.getString(R.string.have) + " "));
+       holder.carbohydrates.setText(String.format(products.get(position).getCarbohydrates() + " " + mContext.getString(R.string.carbohydrate)));
     }
 
     @Override
     public int getItemCount() {
-        return products.size();
+        if(products != null){
+            return products.size();
+        }
+        return 0;
     }
 
-
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    protected class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView name;
         TextView carbohydrates;
@@ -54,7 +61,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.name_product);
             carbohydrates = (TextView) itemView.findViewById(R.id.name_carbohydrates);
-            itemView.setOnClickListener(this);
+//            itemView.setOnClickListener(this);
         }
 
         @Override
@@ -63,9 +70,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         }
     }
 
-    public void setClickListener(ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
+//    public void setClickListener(ItemClickListener itemClickListener) {
+//        this.mClickListener = itemClickListener;
+//    }
 
     public interface ItemClickListener {
         void onItemClick(View view, int position);

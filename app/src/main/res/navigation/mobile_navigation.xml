@@ -12,14 +12,22 @@
         tools:layout="@layout/fragment_register" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.calccarbohydrates.ui.products.ProductsFragment"
+        android:id="@+id/nav_product"
+        android:name="com.example.calccarbohydrates.ui.products.ListProductsFragment"
         android:label="@string/menu_products"
-        tools:layout="@layout/fragment_products" />
+        tools:layout="@layout/fragment_list_products" >
+        <action
+            android:id="@+id/action_nav_gallery_to_nav_slideshow"
+            app:destination="@id/nav_products" />
+    </fragment>
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_products"
         android:name="com.example.calccarbohydrates.ui.recipes.RecipesFragment"
         android:label="@string/menu_recipes"
-        tools:layout="@layout/fragment_recipes" />
+        tools:layout="@layout/fragment_create_product" >
+        <action
+            android:id="@+id/action_nav_slideshow_to_nav_gallery"
+            app:destination="@id/nav_product" />
+    </fragment>
 </navigation>

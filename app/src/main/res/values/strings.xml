@@ -7,10 +7,13 @@
     <string name="next">Next</string>
     <string name="home">Home</string>
 
-    <string name="register">Register</string>
+    <string name="journal">Journal</string>
     <string name="recipes">Recipes</string>
-    <string name="products">Products</string>
-    <string name="carbohydrates">Carbohydrates</string>
+
+
+<!--    for create product-->
+    <string name="products">Product</string>
+    <string name="carbohydrates">Carbohydrates per 100 grams</string>
     <string name="add_product">Add Product</string>
 
 
@@ -19,7 +22,13 @@
     <string name="navigation_drawer_open">Navigation drawer open</string>
     <string name="navigation_drawer_close">Navigation drawer close</string>
 
+
     <string name="menu_register">Register</string>
     <string name="menu_products">Products</string>
     <string name="menu_recipes">Recipes</string>
+
+<!--    for products adapter-->
+    <string name="product">Product</string>
+    <string name="have">have</string>
+    <string name="carbohydrate">carbohydrates per 100 grams</string>
 </resources>
