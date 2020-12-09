@@ -7,9 +7,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.calccarbohydrates.dao.ProductsDao;
-import com.example.calccarbohydrates.model.Products;
+import com.example.calccarbohydrates.model.Product;
 
-@Database(entities = {Products.class}, version = 1, exportSchema = false)
+@Database(entities = {Product.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract ProductsDao productsDao();
@@ -19,7 +19,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
 
          public static synchronized AppDatabase getAppDatabase(final Context context) {
-             if(INSTANCE==null){
+             if(INSTANCE == null){
 
                  INSTANCE = create(context);
                     }

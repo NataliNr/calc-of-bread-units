@@ -3,31 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/listProductsFragment">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.calccarbohydrates.ui.journal.JournalFragment"
-        android:label="@string/menu_register"
-        tools:layout="@layout/fragment_register" />
-
-    <fragment
-        android:id="@+id/nav_product"
+        android:id="@+id/listProductsFragment"
         android:name="com.example.calccarbohydrates.ui.products.ListProductsFragment"
-        android:label="@string/menu_products"
+        android:label="ListProductFragment"
         tools:layout="@layout/fragment_list_products" >
         <action
-            android:id="@+id/action_nav_gallery_to_nav_slideshow"
-            app:destination="@id/nav_products" />
+            android:id="@+id/action_listProductsFragment_to_createProductsFragment"
+            app:destination="@id/createProductsFragment" />
+        <action
+            android:id="@+id/action_listProductsFragment_to_updateProductFragment"
+            app:destination="@id/updateProductFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/nav_products"
-        android:name="com.example.calccarbohydrates.ui.recipes.RecipesFragment"
-        android:label="@string/menu_recipes"
-        tools:layout="@layout/fragment_create_product" >
+        android:id="@+id/updateProductFragment"
+        android:name="com.example.calccarbohydrates.ui.products.UpdateProductFragment"
+        android:label="UpdateProductFragment" >
+
         <action
-            android:id="@+id/action_nav_slideshow_to_nav_gallery"
-            app:destination="@id/nav_product" />
+            android:id="@+id/action_updateProductFragment_to_listProductsFragment"
+            app:destination="@id/listProductsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createProductsFragment"
+        android:name="com.example.calccarbohydrates.ui.products.CreateProductFragment"
+        android:label="CreateProductsFragment" >
+        <action
+            android:id="@+id/action_createProductsFragment_to_listProductsFragment"
+            app:destination="@id/listProductsFragment" />
     </fragment>
 </navigation>

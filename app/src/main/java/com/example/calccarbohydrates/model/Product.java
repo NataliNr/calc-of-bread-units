@@ -5,10 +5,10 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 
-@Entity(tableName = "products")
-public class Products {
+@Entity(tableName = "product")
+public class Product {
 
-    public Products(String name, String carbohydrates) {
+    public Product(String name, String carbohydrates) {
         this.name = name;
         this.carbohydrates = carbohydrates;
     }
