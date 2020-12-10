@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
@@ -33,8 +34,8 @@ public class CreateProductFragment extends Fragment {
     ){
         View root = inflater.inflate(R.layout.fragment_create_product, container, false);
         productsViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
-        name = root.findViewById(R.id.name);
-        carbohydrates = root.findViewById(R.id.carbohydrates);
+        name = root.findViewById(R.id.create_name);
+        carbohydrates = root.findViewById(R.id.create_carbohydrates);
         button = root.findViewById(R.id.create_button);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -43,10 +44,13 @@ public class CreateProductFragment extends Fragment {
                 if(inputCheck(name.getText().toString(),carbohydrates.getText().toString())){
                     Product product = new Product(name.getText().toString(),carbohydrates.getText().toString());
                     productsViewModel.insert(product);
-                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, ListProductsFragment.newInstance(), ListProductsFragment.class.getSimpleName());
-                    fragmentTransaction.commit();
 
+                    AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                    Fragment listProductsFragment = new ListProductsFragment();
+                    activity.getSupportFragmentManager()
+                            .beginTransaction().replace(R.id.fragment_container, listProductsFragment)
+                            .addToBackStack(null)
+                            .commit();
                 }
             }
         });

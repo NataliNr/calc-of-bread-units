@@ -30,6 +30,10 @@ public class ProductViewModel extends AndroidViewModel {
         productsRepository.insert(products);
     }
 
+    public void update(Product product) {
+        productsRepository.update(product);
+    }
+
     public void delete(Product product) {
         productsRepository.delete(product);
     }

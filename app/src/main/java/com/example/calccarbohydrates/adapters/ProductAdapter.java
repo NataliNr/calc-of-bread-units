@@ -7,10 +7,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.calccarbohydrates.R;
 import com.example.calccarbohydrates.model.Product;
 import com.example.calccarbohydrates.ui.products.ProductViewModel;
+import com.example.calccarbohydrates.ui.products.UpdateProductFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,15 +51,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
        holder.edit.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Product product = mProducts.get(holder.getAdapterPosition());
-//               int sID = product.getId();
-//               String name = product.getName();
-//               String carbohydrates = product.getCarbohydrates();
-//               database.dao.update(sID,name,carbohydrates);
-//               products.clear();
-//               products.addAll(database.dao.getall());
-//               notifyDataSetChanged();
+               Product product = new Product(mProducts.get(position).getId(),mProducts.get(position).getName(),mProducts.get(position).getCarbohydrates());
 
+               AppCompatActivity activity = (AppCompatActivity) v.getContext();
+               activity.getSupportFragmentManager()
+                       .beginTransaction().replace(R.id.fragment_container, UpdateProductFragment.newInstance(product))
+                       .addToBackStack(null)
+                       .commit();
            }
        });
        holder.delete.setOnClickListener(new View.OnClickListener() {
@@ -90,8 +90,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.name_product);
             carbohydrates = (TextView) itemView.findViewById(R.id.name_carbohydrates);
-            edit = (ImageView) itemView.findViewById(R.id.imageView);
-            delete = (ImageView) itemView.findViewById(R.id.imageView2);
+            edit = (ImageView) itemView.findViewById(R.id.imageView_edit);
+            delete = (ImageView) itemView.findViewById(R.id.imageView_delete);
             itemView.setOnClickListener(this);
         }
 

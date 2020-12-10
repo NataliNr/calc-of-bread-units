@@ -9,7 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
@@ -27,7 +29,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class ListProductsFragment extends Fragment implements SearchView.OnQueryTextListener{
 
@@ -51,32 +52,26 @@ public class ListProductsFragment extends Fragment implements SearchView.OnQuery
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, CreateProductFragment.newInstance(), CreateProductFragment.class.getSimpleName());
-                fragmentTransaction.commit();
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                Fragment createProductFragment = new CreateProductFragment();
+                activity.getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.fragment_container, createProductFragment)
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 
         recyclerView = root.findViewById(R.id.recycler_view);
-        productsAdapter = new ProductAdapter(null,getContext());
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(productsAdapter);
-
-        productsViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
-        productsViewModel.getProductsList().observe((LifecycleOwner) getActivity(), new Observer<List<Product>>() {
-            @Override
-            public void onChanged(@Nullable final List<Product> products) {
-                productsAdapter.setProducts(products, productsViewModel);
-            }
-        });
         return root;
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
+        productsAdapter = new ProductAdapter(null,getContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
         productsViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
         productsViewModel.getProductsList().observe((LifecycleOwner) getActivity(), new Observer<List<Product>>() {
             @Override
@@ -86,7 +81,6 @@ public class ListProductsFragment extends Fragment implements SearchView.OnQuery
         });
         recyclerView.setAdapter(productsAdapter);
     }
-
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -111,7 +105,6 @@ public class ListProductsFragment extends Fragment implements SearchView.OnQuery
         });
 
     }
-
 
     @Override
     public boolean onQueryTextSubmit(String query) {

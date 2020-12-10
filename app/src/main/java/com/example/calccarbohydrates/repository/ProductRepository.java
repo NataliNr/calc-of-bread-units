@@ -16,8 +16,6 @@ public class ProductRepository {
     private final ProductsDao productsDao;
     private final LiveData<List<Product>> productsList;
 
-
-
     public ProductRepository(Application application) {
         AppDatabase db = AppDatabase.getAppDatabase(application);
 
@@ -31,6 +29,10 @@ public class ProductRepository {
 
     public void insert(Product product) {
         new InsertAsyncTask(productsDao).execute(product);
+    }
+
+    public void update(Product product) {
+        new UpdateAsyncTask(productsDao).execute(product);
     }
 
     public void delete(Product product) {
@@ -48,6 +50,21 @@ public class ProductRepository {
         @Override
         protected Void doInBackground(final Product... params) {
             productsDao.insertProduct(params[0]);
+            return null;
+        }
+    }
+
+    private static class UpdateAsyncTask extends AsyncTask<Product, Void, Void> {
+
+        private final ProductsDao productsDao;
+
+        UpdateAsyncTask(ProductsDao productsDao) {
+            this.productsDao = productsDao;
+        }
+
+        @Override
+        protected Void doInBackground(final Product... params) {
+            productsDao.updateProduct(params[0]);
             return null;
         }
     }

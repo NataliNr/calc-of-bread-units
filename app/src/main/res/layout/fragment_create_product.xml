@@ -20,7 +20,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/name"
+            android:id="@+id/create_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/products"
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content">
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/carbohydrates"
+        android:id="@+id/create_carbohydrates"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/carbohydrates"

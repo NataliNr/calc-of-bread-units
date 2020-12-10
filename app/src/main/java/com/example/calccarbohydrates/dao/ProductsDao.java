@@ -6,6 +6,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.calccarbohydrates.model.Product;
 
@@ -19,12 +20,10 @@ public interface ProductsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertProduct(Product product);
 
-//    @Query("SELECT * FROM products WHERE productName = :name")
-//    List<Products> findProduct(String name);
-//
+    @Update
+    void updateProduct(Product product);
+
     @Delete
     void deleteProduct(Product product);
 
-//    @Query("UPDATE products SET text = :sText WHERE ID = :sId")
-//    void update(int sID, String sText);
 }

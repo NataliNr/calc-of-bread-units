@@ -1,5 +1,6 @@
 package com.example.calccarbohydrates;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 
@@ -21,9 +22,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private NavigationView navigationView;
     private DrawerLayout drawer;
-    private Toolbar toolbar;
     private FragmentTransaction fragmentTransaction;
 
     @Override
@@ -31,12 +30,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        navigationView = (NavigationView)findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -57,10 +56,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        boolean closeDrawer = true;
         switch (id) {
             case R.id.products:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -78,9 +77,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragmentTransaction.commit();
                 break;
         }
-        if (closeDrawer) {
-            drawer.closeDrawer(GravityCompat.START);
-        }
+        drawer.closeDrawer(GravityCompat.START);
 
         return false;
     }
