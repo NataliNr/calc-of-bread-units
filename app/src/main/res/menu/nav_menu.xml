@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
 
     <group android:id="@+id/group_menu">
+        <item android:id="@+id/nav_login"
+                android:title="@string/title_activity_login" />
         <item android:id="@+id/products"
             android:title="@string/products" />
         <item android:id="@+id/journal"
             android:title="@string/journal" />
         <item android:id="@+id/recipes"
             android:title="@string/recipes" />
+        <item android:id="@+id/bg_lang"
+            android:title="bg" />
+        <item android:id="@+id/en_lang"
+            android:title="en" />
+        <item android:id="@+id/nav_logout"
+            android:title="@string/logout" />
     </group>
 </menu>

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.calccarbohydrates.R;
 import com.example.calccarbohydrates.model.Product;
 import com.example.calccarbohydrates.ui.products.ProductViewModel;
@@ -45,36 +46,36 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-       holder.name.setText(String.format(" " + mProducts.get(position).getName() + " " + mContext.getString(R.string.have) + " "));
-       holder.carbohydrates.setText(String.format(mProducts.get(position).getCarbohydrates() + " " + mContext.getString(R.string.carbohydrate)));
+        holder.name.setText(String.format(" " + mProducts.get(position).getName() + " " + mContext.getString(R.string.have) + " "));
+        holder.carbohydrates.setText(String.format(mProducts.get(position).getCarbohydrates() + " " + mContext.getString(R.string.carbohydrate)));
 
-       holder.edit.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Product product = new Product(mProducts.get(position).getId(),mProducts.get(position).getName(),mProducts.get(position).getCarbohydrates());
+        holder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Product product = new Product(mProducts.get(position).getId(), mProducts.get(position).getName(), mProducts.get(position).getCarbohydrates());
 
-               AppCompatActivity activity = (AppCompatActivity) v.getContext();
-               activity.getSupportFragmentManager()
-                       .beginTransaction().replace(R.id.fragment_container, UpdateProductFragment.newInstance(product))
-                       .addToBackStack(null)
-                       .commit();
-           }
-       });
-       holder.delete.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               mProductsViewModel.delete(mProducts.get(holder.getAdapterPosition()));
-               int position = holder.getAdapterPosition();
-               mProducts.remove(position);
-               notifyItemRemoved(position);
-               notifyItemRangeChanged(position,mProducts.size());
-           }
-       });
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                activity.getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.fragment_container, UpdateProductFragment.newInstance(product))
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mProductsViewModel.delete(mProducts.get(holder.getAdapterPosition()));
+                int position = holder.getAdapterPosition();
+                mProducts.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, mProducts.size());
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        if(mProducts != null){
+        if (mProducts != null) {
             return mProducts.size();
         }
         return 0;
@@ -86,7 +87,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         TextView carbohydrates;
         ImageView edit, delete;
 
-        private   ViewHolder(View itemView) {
+        private ViewHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.name_product);
             carbohydrates = (TextView) itemView.findViewById(R.id.name_carbohydrates);
@@ -101,7 +102,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         }
     }
 
-    public void setFilter(List<Product> products){
+    public void setFilter(List<Product> products) {
         mProducts = new ArrayList<>();
         mProducts.addAll(products);
         notifyDataSetChanged();

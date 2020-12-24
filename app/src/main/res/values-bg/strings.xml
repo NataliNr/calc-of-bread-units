@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">CalcCarbohydrates</string>
+    <string name="action_settings">Настройки</string>
+    <string name="action_search">Търсене</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">1 Fragment</string>
+    <string name="second_fragment_label">2 Fragment</string>
+    <string name="next">Next</string>
+    <string name="home">Х</string>
+
+    <string name="journal">Регистър</string>
+    <string name="recipes">Рецепти</string>
+
+
+    <!--    for create product-->
+    <string name="products">Продукт</string>
+    <string name="carbohydrates">Въглехидрати на 100 грама</string>
+    <string name="add_product">Добави продукт</string>
+    <string name="update_product">Актуализирай продукта</string>
+
+
+    <string name="hello_register_fragment">Hello register fragment</string>
+    <string name="hello_home_fragment"> home fragment</string>
+    <string name="navigation_drawer_open">Navigation drawer open</string>
+    <string name="navigation_drawer_close">Navigation drawer close</string>
+
+
+    <string name="menu_register">Регистър</string>
+    <string name="menu_products">Продукти</string>
+    <string name="menu_recipes">Рецепти</string>
+
+    <!--    for products adapter-->
+    <string name="product">Продукт</string>
+    <string name="have">има</string>
+    <string name="carbohydrate">въглехидрати на 100 грама</string>
+</resources>

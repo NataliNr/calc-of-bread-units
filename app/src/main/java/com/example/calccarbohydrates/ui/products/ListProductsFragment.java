@@ -30,7 +30,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListProductsFragment extends Fragment implements SearchView.OnQueryTextListener{
+public class ListProductsFragment extends Fragment implements SearchView.OnQueryTextListener {
 
     RecyclerView recyclerView;
     ProductAdapter productsAdapter;
@@ -44,8 +44,8 @@ public class ListProductsFragment extends Fragment implements SearchView.OnQuery
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,
-                @Nullable ViewGroup container,
-                @Nullable Bundle savedInstanceState
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState
     ) {
         View root = inflater.inflate(R.layout.fragment_list_products, container, false);
         fab = root.findViewById(R.id.floatingActionButton);
@@ -62,6 +62,7 @@ public class ListProductsFragment extends Fragment implements SearchView.OnQuery
         });
 
         recyclerView = root.findViewById(R.id.recycler_view);
+//        recyclerView.setNestedScrollingEnabled(false);
         return root;
     }
 
@@ -69,14 +70,14 @@ public class ListProductsFragment extends Fragment implements SearchView.OnQuery
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
-        productsAdapter = new ProductAdapter(null,getContext());
+        productsAdapter = new ProductAdapter(null, getContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         productsViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
         productsViewModel.getProductsList().observe((LifecycleOwner) getActivity(), new Observer<List<Product>>() {
             @Override
             public void onChanged(@Nullable final List<Product> products) {
-                productsAdapter.setProducts(products ,productsViewModel);
+                productsAdapter.setProducts(products, productsViewModel);
             }
         });
         recyclerView.setAdapter(productsAdapter);

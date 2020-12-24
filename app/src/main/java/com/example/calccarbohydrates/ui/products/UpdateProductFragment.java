@@ -40,7 +40,7 @@ public class UpdateProductFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState
-    ){
+    ) {
         View root = inflater.inflate(R.layout.fragment_update_product, container, false);
         productsViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
         name = root.findViewById(R.id.update_name);
@@ -56,8 +56,8 @@ public class UpdateProductFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(inputCheck(name.getText().toString(),carbohydrates.getText().toString())) {
-                    Product product = new Product(id,name.getText().toString(), carbohydrates.getText().toString());
+                if (inputCheck(name.getText().toString(), carbohydrates.getText().toString())) {
+                    Product product = new Product(id, name.getText().toString(), carbohydrates.getText().toString());
                     productsViewModel.update(product);
 
                     AppCompatActivity activity = (AppCompatActivity) v.getContext();
@@ -74,8 +74,8 @@ public class UpdateProductFragment extends Fragment {
         return root;
     }
 
-        private boolean inputCheck(String name, String carbohydrates){
-            return !(TextUtils.isEmpty(name) && TextUtils.isEmpty(carbohydrates));
-        }
+    private boolean inputCheck(String name, String carbohydrates) {
+        return !(TextUtils.isEmpty(name) && TextUtils.isEmpty(carbohydrates));
+    }
 
 }

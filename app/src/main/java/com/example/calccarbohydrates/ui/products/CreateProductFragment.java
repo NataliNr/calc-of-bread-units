@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+
 import com.example.calccarbohydrates.R;
 import com.example.calccarbohydrates.model.Product;
 
@@ -31,7 +32,7 @@ public class CreateProductFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState
-    ){
+    ) {
         View root = inflater.inflate(R.layout.fragment_create_product, container, false);
         productsViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
         name = root.findViewById(R.id.create_name);
@@ -41,8 +42,8 @@ public class CreateProductFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(inputCheck(name.getText().toString(),carbohydrates.getText().toString())){
-                    Product product = new Product(name.getText().toString(),carbohydrates.getText().toString());
+                if (inputCheck(name.getText().toString(), carbohydrates.getText().toString())) {
+                    Product product = new Product(name.getText().toString(), carbohydrates.getText().toString());
                     productsViewModel.insert(product);
 
                     AppCompatActivity activity = (AppCompatActivity) v.getContext();
@@ -57,7 +58,7 @@ public class CreateProductFragment extends Fragment {
         return root;
     }
 
-    private boolean inputCheck(String name, String carbohydrates){
+    private boolean inputCheck(String name, String carbohydrates) {
         return !(TextUtils.isEmpty(name) && TextUtils.isEmpty(carbohydrates));
     }
 

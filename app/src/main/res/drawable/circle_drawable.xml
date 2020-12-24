@@ -3,9 +3,9 @@
 
     <stroke
         android:width="4dp"
-        android:color="@color/material_on_surface_disabled"/>
-    <solid android:color="@color/material_on_surface_disabled"/>
-    <solid android:color="@color/material_on_surface_disabled"/>
+        android:color="@color/white"/>
+    <solid android:color="@color/white"/>
+    <solid android:color="@color/white"/>
     <padding
         android:bottom="4dp"
         android:left="4dp"

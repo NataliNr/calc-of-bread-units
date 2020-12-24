@@ -26,7 +26,7 @@ public class JournalFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         registerViewModel =
                 new ViewModelProvider(this).get(JournalViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_register, container, false);
+        View root = inflater.inflate(R.layout.fragment_journal, container, false);
         final TextView textView = root.findViewById(R.id.textview_first);
         registerViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
