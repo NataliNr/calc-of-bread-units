@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.calccarbohydrates.R;
@@ -71,6 +72,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 notifyItemRangeChanged(position, mProducts.size());
             }
         });
+        holder.camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
@@ -85,7 +92,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         TextView name;
         TextView carbohydrates;
-        ImageView edit, delete;
+        ImageView edit, delete, camera;
 
         private ViewHolder(View itemView) {
             super(itemView);
@@ -93,6 +100,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             carbohydrates = (TextView) itemView.findViewById(R.id.name_carbohydrates);
             edit = (ImageView) itemView.findViewById(R.id.imageView_edit);
             delete = (ImageView) itemView.findViewById(R.id.imageView_delete);
+            camera = (ImageView) itemView.findViewById(R.id.imageView_camera);
             itemView.setOnClickListener(this);
         }
 

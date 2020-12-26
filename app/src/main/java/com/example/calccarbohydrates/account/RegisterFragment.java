@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,19 +48,19 @@ public class RegisterFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_register, container, false);
 
         auth = FirebaseAuth.getInstance();
-        
+
         inputEmail = view.findViewById(R.id.email);
         inputPassword = view.findViewById(R.id.password);
         inputConformPassword = view.findViewById(R.id.confirm_password);
         progressBar = view.findViewById(R.id.progressBar);
-        
+
         btnSignIn = view.findViewById(R.id.sign_in_button);
         btnSignUp = view.findViewById(R.id.sign_up_button);
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
                 fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, LoginFragment.newInstance(), LoginFragment.class.getSimpleName());
                 fragmentTransaction.commit();
@@ -84,14 +83,13 @@ public class RegisterFragment extends Fragment {
         String password = inputPassword.getText().toString().trim();
         String confirmPassword = inputConformPassword.getText().toString().trim();
 
-        if(email.isEmpty() || email.contentEquals("@")){
-            showError(inputEmail,"Email is not valid");
-        }else if (password.isEmpty() || password.length() < 7){
-            showError(inputPassword,"Password must be 7 characters");
-        }else if(confirmPassword.isEmpty() || !confirmPassword.equals(password)){
-            showError(inputConformPassword,"Password not mach!");
-        }
-        else {
+        if (email.isEmpty() || email.contentEquals("@")) {
+            showError(inputEmail, "Email is not valid");
+        } else if (password.isEmpty() || password.length() < 7) {
+            showError(inputPassword, "Password must be 7 characters");
+        } else if (confirmPassword.isEmpty() || !confirmPassword.equals(password)) {
+            showError(inputConformPassword, "Password not mach!");
+        } else {
             progressBar.setVisibility(View.VISIBLE);
             auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener((Activity) getContext(), new OnCompleteListener<AuthResult>() {
@@ -108,9 +106,8 @@ public class RegisterFragment extends Fragment {
                                 Intent intent = new Intent(getContext(), MainActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
-                            }
-                            else {
-                                    Toast.makeText(getContext(), task.getException().toString(),
+                            } else {
+                                Toast.makeText(getContext(), task.getException().toString(),
                                         Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -119,7 +116,7 @@ public class RegisterFragment extends Fragment {
         }
     }
 
-    private void showError(EditText input, String s){
+    private void showError(EditText input, String s) {
         input.setError(s);
         input.requestFocus();
     }

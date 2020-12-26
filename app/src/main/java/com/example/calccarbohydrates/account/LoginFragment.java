@@ -30,7 +30,7 @@ public class LoginFragment extends Fragment {
     private FirebaseAuth auth;
     private ProgressBar progressBar;
     private Button btnLogin;
-    private TextView resetPassword,signUp;
+    private TextView resetPassword, signUp;
     private FragmentTransaction fragmentTransaction;
 
     public static Fragment newInstance() {
@@ -97,7 +97,6 @@ public class LoginFragment extends Fragment {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
                                 if (!task.isSuccessful()) {
-                                    // there was an error
                                     if (password.length() < 6) {
                                         inputPassword.setError(getString(R.string.minimum_password));
                                     } else {

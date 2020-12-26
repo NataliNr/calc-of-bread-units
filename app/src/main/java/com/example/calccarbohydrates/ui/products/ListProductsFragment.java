@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -62,7 +61,6 @@ public class ListProductsFragment extends Fragment implements SearchView.OnQuery
         });
 
         recyclerView = root.findViewById(R.id.recycler_view);
-//        recyclerView.setNestedScrollingEnabled(false);
         return root;
     }
 

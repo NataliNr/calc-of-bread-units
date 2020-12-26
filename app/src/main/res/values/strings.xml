@@ -11,8 +11,13 @@
     <string name="journal">Journal</string>
     <string name="recipes">Recipes</string>
 
+    <string name="edit" translatable="false">edit</string>
+    <string name="delete" translatable="false">delete</string>
+    <string name="camera" translatable="false">camera</string>
+    <string name="floatingActionButton" translatable="false">Floatin gAction Button</string>
 
-<!--    for create product-->
+
+    <!--    for create product-->
     <string name="products">Product</string>
     <string name="carbohydrates">Carbohydrates per 100 grams</string>
     <string name="add_product">Add Product</string>
@@ -29,7 +34,7 @@
     <string name="menu_products">Products</string>
     <string name="menu_recipes">Recipes</string>
 
-<!--    for products adapter-->
+    <!--    for products adapter-->
     <string name="product">Product</string>
     <string name="have">have</string>
     <string name="carbohydrate">carbohydrates per 100 grams</string>
